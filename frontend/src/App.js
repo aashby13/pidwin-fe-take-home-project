@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useCallback, useEffect } from "react";
+import { Puzzle } from "./components/Puzzle";
+
 
 function App() {
+  const checkWord = useCallback(async (guess) => {
+    const resp = await fetch(`http://localhost:9000/api/word?guess=${guess}`);
+    const json = await resp.json();
+    console.log(json);
+  }, []);
+
+  useEffect(() => {
+    checkWord('geuss');
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <>
+      <header>
+        Wordle
       </header>
-    </div>
+
+      <main>
+        <Puzzle />
+      </main>
+    </>
   );
 }
 

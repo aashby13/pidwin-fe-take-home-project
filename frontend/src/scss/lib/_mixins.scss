@@ -1,0 +1,23 @@
+@use "sass:math";
+
+@function em($target, $context: 16) {
+  @return math.div($target, $context)*1em;
+}
+
+$media-rules: (
+  tablet-width-min: 720px,
+  desktop-width-min: 960px
+);
+
+@mixin laptop {
+  @media (min-width: #{ map_get($media-rules, laptop-width-min)}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{ map_get($media-rules, desktop-width-min)}) {
+    @content;
+  }
+}
+
