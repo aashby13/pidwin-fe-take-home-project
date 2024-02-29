@@ -9,8 +9,8 @@ $media-rules: (
   desktop-width-min: 960px
 );
 
-@mixin laptop {
-  @media (min-width: #{ map_get($media-rules, laptop-width-min)}) {
+@mixin tablet {
+  @media (min-width: #{ map_get($media-rules, tablet-width-min)}) {
     @content;
   }
 }

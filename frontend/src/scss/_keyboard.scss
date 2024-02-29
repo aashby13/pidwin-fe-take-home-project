@@ -1,0 +1,81 @@
+.keyboard {
+
+  &__container {
+    width: 100%;
+    max-width: $puzzle-max-width-mobile;
+
+    @include tablet {
+      max-width: em(502);
+    }
+  }
+
+  &__row {
+    display: grid;
+    width: 100%;
+    gap: 1.5936%;
+
+    &:nth-child(1) {
+      grid-template-columns: repeat(10, 1fr);
+    }
+
+    &:nth-child(2) {
+      grid-template-columns: repeat(9, 1fr);
+      padding: 1.5936% 5.08%; 
+    }
+
+    &:nth-child(3) {
+      padding: 0 0.9%; 
+      grid-template-columns: 1.468fr repeat(7, 1fr) 1.468fr;
+      @include tablet {
+        grid-template-columns: 1.488fr repeat(7, 1fr) 1.488fr;
+      }
+    }
+  }
+
+  &__key {
+    color: $color-white;
+    background-color: $color-dark-gray;
+    text-transform: uppercase;
+    font-family: Inter;
+    font-size: em(12);
+    font-weight: 700;
+    line-height: em(12,12);
+    letter-spacing: em(2,12) * -1;
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    aspect-ratio: 43/58;
+
+    &[data-key="enter"] {
+      font-size: em(10);
+      line-height: em(10,10);
+    }
+
+    &[data-key="enter"],
+    &[data-key="backspace"] {
+      aspect-ratio: unset;
+    }
+
+    svg {
+      width: 60%;
+    }
+
+    @include tablet {
+      font-size: em(20);
+      line-height: em(20,20);
+      letter-spacing: em(2,20) * -1;
+
+      &[data-key="enter"] {
+        font-size: em(12);
+        line-height: em(12,12);
+      }
+
+      svg {
+        width: 50%;
+      }
+    }
+
+  }
+}

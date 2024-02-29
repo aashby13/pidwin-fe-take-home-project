@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from "react";
 import { Puzzle } from "./components/Puzzle";
-
+import { KeyBoard } from "./components/KeyBoard";
 
 function App() {
   const checkWord = useCallback(async (guess) => {
@@ -21,6 +21,12 @@ function App() {
 
       <main>
         <Puzzle />
+
+        <button className="main-button" disabled={ true }>
+          <span>Guess Word</span>
+        </button>
+
+        <KeyBoard />
       </main>
     </>
   );

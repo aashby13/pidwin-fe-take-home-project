@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: $color-black;
+  color: $color-white;
+  font-size: 100%;
+}
+
+header {
+  font-size: em(32);
+  line-height: em(32, 32);
+  letter-spacing: em(-2, 32);
+  font-weight: 800;
+  text-align: center;
+  padding: em(12, 32);
+  border-bottom: 1px solid $color-dark-gray;
+
+  @include tablet {
+    font-size: em(40);
+    line-height: em(40, 40);
+    letter-spacing: em(-2, 40);
+    padding: em(24, 40);
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: em(16);
+  padding: em(32) em(16);
+
+  @include tablet {
+    gap: em(48);
+    padding: em(96) em(32);
+  }
+}
+
+.main-button {
+  color: $color-white;
+  background-color: $color-dark-gray;
+  width: 100%;
+  max-width: $puzzle-max-width-mobile;
+  padding: em(12) em(24);
+  border-radius: em(8);
+
+  &[disabled] {
+    color: $color-dark-gray;
+    background-color: $color-darker-gray;
+  }
+  
+  @include tablet {
+    max-width: $puzzle-max-width-desktop;
+    padding: em(16) em(32);
+  }
+  
+  span {
+    font-size: em(16);
+    line-height: em(16,16);
+    font-weight: 600;
+  }
+}

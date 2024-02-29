@@ -2,19 +2,18 @@
 
   &__container {
     width: 100%;
-    max-width: em(350);
+    max-width: $puzzle-max-width-mobile;
     aspect-ratio: 340/410;
 
-    @include desktop {
-      max-width: em(340);
+    @include tablet {
+      max-width: $puzzle-max-width-desktop;
     }
   }
 
   &__grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-    gap: em(10);
+    gap: 2.94%;
   }
 
   &__piece {
