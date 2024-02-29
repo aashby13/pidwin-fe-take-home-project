@@ -26,6 +26,7 @@ export const Puzzle = () => {
           letter={obj.letter} 
           state={obj.state} 
           current={current}
+          column={column}
         />)
       });
     });

@@ -64,7 +64,7 @@
       animation-fill-mode: both;
 
       @for $i from 2 through 5 {
-        &:nth-child(#{$i}) {
+        &[data-column="#{$i}"] {
           animation-delay: #{$i * 50} + ms;
         }
       }
