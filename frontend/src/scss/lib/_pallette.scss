@@ -7,28 +7,3 @@ $color-dark-gray: #3A3A3C;
 $color-darker-gray: #1A1A1A;
 $color-light-gray: #5C5C62;
 
-$colors: (
-  "white": $color-white,
-  "black": $color-black,
-  "green": $color-green,
-  "yellow": $color-yellow,
-  "red": $color-red,
-  "dark-gray": $color-dark-gray,
-  "darker-gray": $color-darker-gray,
-  "light-gray": $color-light-gray
-);
-
-@each $color, $i in $colors {
-  .color--#{$color} {
-    color: $i !important;
-  }
-  .bg-color--#{$color} {
-    background-color: $i !important;
-  }
-  .fill--#{$color} {
-    fill: $i !important;
-  }
-  .border-color--#{$color} {
-    border-color: $i !important;
-  }
-}
