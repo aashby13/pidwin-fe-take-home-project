@@ -10,14 +10,12 @@ export const Puzzle = () => {
   const [pieces, setPieces] = useState([]);
 
   useEffect(() => {
-    console.log(board, currentPiece);
     const all = [];
-    let active;
+    let current;
     //
     board.forEach((arr, row) => {
       arr.forEach((obj, column) => {
-        /* console.log(row, currentPiece.row, column, currentPiece.column, currentPiece.value.length, board[row][column].letter); */
-        active = row === currentPiece.row 
+        current = row === currentPiece.row 
                   && column === currentPiece.column 
                   && currentPiece.value.length === column 
                   && !!board[row][column].letter;
@@ -27,21 +25,23 @@ export const Puzzle = () => {
           key={`box${row}${column}`} 
           letter={obj.letter} 
           state={obj.state} 
-          active={active}
+          current={current}
         />)
       });
     });
     setPieces(all);
   }, [board, currentPiece])
 
+
+  // set state of board objects
   useEffect(() => {
     console.log(wordCheck);
     if (wordCheck && wordCheck.success) {
-      const row = board[currentPiece.row].map((obj, column) => {
+      const row = board[currentPiece.row - 1].map((obj, column) => {
         return { ...obj, state: wordCheck.result.charAt(column) }
       })
       const arr = getDeepClone(board);
-      arr[currentPiece.row] = row;
+      arr[currentPiece.row - 1] = row;
       wordCheck$.next(undefined);
       board$.next(arr);
     }

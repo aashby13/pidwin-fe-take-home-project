@@ -6,7 +6,7 @@ export function useSubject(subject$) {
   useEffect(() => {
     const sub = subject$.subscribe(setValue);
     return () => sub.unsubscribe();
-  }, [])
+  }, [subject$])
   return value;
 }
 

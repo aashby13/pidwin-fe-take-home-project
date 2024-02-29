@@ -1,69 +1,31 @@
-import { useCallback, useEffect, useState } from "react";
-import { columnLength, keys, rowLength } from "../lib/contants";
+import { useCallback, useEffect } from "react";
+import { keys, keysFlat } from "../lib/contants";
 import { KeyButton } from "./KeyButton";
-import { board$, currentPiece$ } from "../lib/state";
-import { getDeepClone, useSubject } from "../lib/functions";
 
-export const KeyBoard = () => {
-  const currentPiece = useSubject(currentPiece$);
-  const board = useSubject(board$);
-  const [activeKey, setActiveKey] = useState(null);
+export const KeyBoard = ({ activeKey, onKeyboard }) => {
 
   const onKeyBtnClick = useCallback((key) => {
-    console.log(key);
-    switch (key) {
-      case 'enter':
-        const letter = board[currentPiece.row][currentPiece.column].letter;
-        const piece = {...currentPiece, value: currentPiece.value + letter};
-        if (piece.column === columnLength - 1) {
-          piece.column = 0;
-          piece.row += 1;
-        } else {
-          piece.column += 1;
-        }
-        currentPiece$.next(piece);
-        setActiveKey(null);
-        break;
+    onKeyboard(key);
+  }, [onKeyboard])
 
-      case 'backspace':
-        
-        break;
-    
-      default:
-        const obj = { ...board[currentPiece.row][currentPiece.column], letter: key };
-        const arr = getDeepClone(board);
-        arr[currentPiece.row][currentPiece.column] = obj;
-        setActiveKey(key);
-        board$.next(arr);
-        break;
+  const onKeyUp = useCallback((e) => {
+    let key = e.key.toLowerCase();
+    if (keysFlat.includes(key)) {
+      onKeyBtnClick(key);
     }
-  }, [board, currentPiece])
+  }, [onKeyBtnClick])
 
   useEffect(() => {
-    console.log(currentPiece)
-  }, [currentPiece])
-
-  useEffect(() => {
-    const keysFlat = keys.flat();
-    //
     const onKeyDown = (e) => {
       e.preventDefault();
     }
-    //
-    const onKeyUp = (e) => {
-      let key = e.key.toLowerCase();
-      if (keysFlat.includes(key)) {
-        onKeyBtnClick(key);
-      }
-    }
-    //
     document.addEventListener('keydown', onKeyDown);
     document.addEventListener('keyup', onKeyUp);
     return () => {
       document.removeEventListener('keyup', onKeyUp);
       document.removeEventListener('keydown', onKeyDown);
     };
-  }, [])
+  }, [onKeyUp])
 
   return (
     <div className='keyboard__container'>

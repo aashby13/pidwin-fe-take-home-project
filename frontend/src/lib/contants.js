@@ -4,6 +4,8 @@ export const keys = [
   ['enter', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'backspace']
 ]
 
-export const rowLength = 5;
+export const keysFlat = keys.flat();
 
-export const columnLength = 6;
+export const rowLength = 6;
+
+export const columnLength = 5;

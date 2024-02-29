@@ -55,7 +55,7 @@
       background-color: $color-yellow;
     }
 
-    &[data-active="true"] {
+    &[data-current="true"] {
       border-color: $color-light-gray;
     }
   }

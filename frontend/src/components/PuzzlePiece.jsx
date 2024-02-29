@@ -1,10 +1,7 @@
-export const PuzzlePiece = ({letter, state, active}) => {
-
-  return (
-    <div className='puzzle__piece' data-state={ state || 'none' } data-active={active}>
-      {
-        !!letter && <span>{ letter }</span>
-      }
-    </div>
-  );
-}
+export const PuzzlePiece = ({letter, state, current}) => (
+  <div className='puzzle__piece' data-state={ state } data-current={current}>
+    {
+      !!letter && <span>{ letter }</span>
+    }
+  </div>
+);
