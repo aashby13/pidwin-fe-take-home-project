@@ -1,9 +1,6 @@
-import React, { useEffect } from "react";
-
-export const KeyButton = ({ text, onClick }) => {
-  
+export const KeyButton = ({ text, active, onClick }) => {
   return (
-    <button className='keyboard__key' data-key={text} onClick={() => onClick(text)}>
+    <button className='keyboard__key' data-key={text} data-active={active} onClick={() => onClick(text)}>
       {
         text === 'backspace' ? (
           <svg xmlns="http://www.w3.org/2000/svg" className="fill--white" viewBox="0 0 25 24">

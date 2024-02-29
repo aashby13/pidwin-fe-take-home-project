@@ -48,6 +48,10 @@
     border-radius: 4px;
     aspect-ratio: 43/58;
 
+    &[data-active="true"] {
+      background-color: $color-light-gray;
+    }
+
     &[data-key="enter"] {
       font-size: em(10);
       line-height: em(10,10);

@@ -19,5 +19,44 @@
   &__piece {
     aspect-ratio: 1/1;
     border: 1px solid $color-dark-gray;
+    position: relative;
+    display: grid;
+
+    span {
+      justify-self: center;
+      align-self: center;
+      font-size: em(24);
+      font-weight: 700;
+      line-height: em(24,24);
+      letter-spacing: 0px;
+      text-transform: uppercase;
+    }
+
+    &[data-state="x"] {
+      border-color: $color-red;
+
+      &::after {
+        content: '';
+        width: 140%;
+        height: 1px;
+        background-color: $color-red;
+        position: absolute;
+        top: calc(50% - 1px);
+        left: -20%;
+        transform: rotate(-45deg);
+      }
+    }
+
+    &[data-state="1"] {
+      background-color: $color-green;
+    }
+
+    &[data-state="0"] {
+      background-color: $color-yellow;
+    }
+
+    &[data-active="true"] {
+      border-color: $color-light-gray;
+    }
   }
 }
