@@ -20,7 +20,6 @@ function App() {
   }
 
   const onKeyboard = useCallback((key) => {
-    /* console.log(key, currentPiece, board[currentPiece.row][currentPiece.column].letter); */
     switch (key) {
       case 'enter':
         let letter;
