@@ -19,7 +19,10 @@ export const wordCheck$ = new Subject();
  *  'x' = letter not in word
  *  null = not tested
  */
-export const board$ = new BehaviorSubject(Array(columnLength).fill(Array(rowLength).fill({ letter: null, state: null })));
+export const board$ = new BehaviorSubject(
+  Array(rowLength).fill(
+    Array(columnLength).fill({ letter: null, state: null })
+  ));
 
 
 /**

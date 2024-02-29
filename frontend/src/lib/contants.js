@@ -9,3 +9,5 @@ export const keysFlat = keys.flat();
 export const rowLength = 6;
 
 export const columnLength = 5;
+
+export const successfulResult = Array(columnLength).fill('1').join('');

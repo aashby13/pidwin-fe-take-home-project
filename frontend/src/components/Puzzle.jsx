@@ -35,7 +35,7 @@ export const Puzzle = () => {
 
   // set state of board objects
   useEffect(() => {
-    console.log(wordCheck);
+    /* console.log(wordCheck); */
     if (wordCheck && wordCheck.success) {
       const row = board[currentPiece.row - 1].map((obj, column) => {
         return { ...obj, state: wordCheck.result.charAt(column) }
